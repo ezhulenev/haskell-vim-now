@@ -5,7 +5,7 @@ SCRIPT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 stack_resolver() {
   local DEFAULT_RESOLVER=lts
-  local CONFIGURED=$( sed -rn 's/^resolver:\s*(\S+).*$/\1/p' "$1" 2>/dev/null )
+  local CONFIGURED=$( gsed -rn 's/^resolver:\s*(\S+).*$/\1/p' "$1" 2>/dev/null )
   if [ -z $CONFIGURED ]; then
     echo $DEFAULT_RESOLVER
   else
@@ -77,7 +77,7 @@ setup_tools() {
   local PACKAGE_MGR=$(package_manager)
   local CONFIG_HOME=$(config_home)
 
-  local BREW_LIST="git homebrew/dupes/make vim ctags par"
+  local BREW_LIST="git homebrew/dupes/make vim ctags par gnu-sed"
   local APT_LIST="git make vim libcurl4-openssl-dev exuberant-ctags par"
   local YUM_LIST="git make vim ctags libcurl-devel zlib-devel powerline"
 
